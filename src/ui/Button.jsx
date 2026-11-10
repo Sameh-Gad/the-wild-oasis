@@ -26,7 +26,7 @@ export default function Button({
             type={type}
             onClick={onClick}
             disabled={disabled}
-            className={`rounded px-4 py-2 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-stone-400 ${variationClasses} ${className}`}
+            className={`rounded px-4 py-2 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 ${variationClasses} ${className}`}
         >
             {children}
         </button>

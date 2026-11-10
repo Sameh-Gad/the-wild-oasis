@@ -8,9 +8,9 @@ import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 
 function UpdateUserDataForm() {
-    const {
-        user: { email, user_metadata: { fullName: currentFullName } = {} },
-    } = useUser();
+    const { user } = useUser();
+    const email = user?.email ?? "";
+    const currentFullName = user?.user_metadata?.fullName ?? "";
 
     const [fullName, setFullName] = useState(currentFullName || "");
     const [avatar, setAvatar] = useState(null);

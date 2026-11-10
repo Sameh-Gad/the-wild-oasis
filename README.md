@@ -2,6 +2,12 @@
 
 A hotel management dashboard that helps staff manage daily hotel operations in one place. It provides tools for managing cabins and bookings, handling guest check-ins and check-outs, and monitoring hotel activity through a central dashboard.
 
+## Project Background
+
+This project is an extended implementation of **The Wild Oasis**, originally built as part of [Jonas Schmedtmann's React course](https://jonas.io/courses).
+
+The course project provided the foundation, while this version includes additional improvements, updated dependencies, UI refinements, and custom functionality developed as part of my learning and portfolio work.
+
 ## Features
 
 - **Dashboard:** View booking and sales metrics, recent stays, stay-duration analytics, and today's arrivals and departures.
@@ -11,6 +17,16 @@ A hotel management dashboard that helps staff manage daily hotel operations in o
 - **Settings and account management:** Manage hotel settings and user account information.
 - **Authentication:** Supabase authentication and protected application routes.
 - **Server state management:** Data fetching, caching, and synchronization with TanStack Query.
+
+## My Improvements
+
+- **Modernized Tech Stack:** Using React 19, React Router 7, TanStack Query 5, and Tailwind CSS 4.
+- **Server-side Pagination:** Implemented server-side pagination, sorting, and filtering for bookings using Supabase queries.
+- **Enhanced Check-in Workflow:** Added an optional breakfast feature during check-in, with automatic calculation of additional costs based on the number of guests and nights, and updated booking totals.
+- **Route-based Code Splitting:** Added lazy-loaded route components to reduce the initial JavaScript payload and load pages on demand.
+- **Component Refactoring:** Organized booking details into smaller, focused components and extracted reusable UI elements.
+- **Improved Data Handling:** Added URL parameter validation, query cache invalidation, and refined dashboard date handling.
+- **Custom Branding:** Added a custom SVG favicon for the application.
 
 ## Tech Stack
 

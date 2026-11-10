@@ -10,6 +10,7 @@ import QueryState from "../../ui/QueryState";
 export default function DashboardLayout() {
     const {
         bookings,
+        referenceTime,
         isPending: isLoadingBookings,
         error: bookingsError,
         numDays,
@@ -51,7 +52,11 @@ export default function DashboardLayout() {
                 <DurationChart confirmedStays={confirmedStays} />
                 <TodayActivity />
             </div>
-            <SalesChart bookings={bookings} numDays={numDays} />
+            <SalesChart
+                bookings={bookings}
+                numDays={numDays}
+                referenceTime={referenceTime}
+            />
         </div>
     );
 }

@@ -16,6 +16,15 @@ const startData = [
     { duration: "8+ nights", value: 0, color: "#14b8a6" },
 ];
 
+function getDurationLabel(nights) {
+    if (nights === 1) return "1 night";
+    if (nights === 2) return "2 nights";
+    if (nights === 3) return "3 nights";
+    if (nights <= 5) return "4-5 nights";
+    if (nights <= 7) return "6-7 nights";
+    return "8+ nights";
+}
+
 export function DurationChart({ confirmedStays = [] }) {
     const data = confirmedStays
         .reduce(
@@ -23,18 +32,7 @@ export function DurationChart({ confirmedStays = [] }) {
                 const nights = Number(stay.numNights);
                 if (!Number.isInteger(nights) || nights < 1) return counts;
 
-                const duration =
-                    nights === 1
-                        ? "1 night"
-                        : nights === 2
-                          ? "2 nights"
-                          : nights === 3
-                            ? "3 nights"
-                            : nights <= 5
-                              ? "4-5 nights"
-                              : nights <= 7
-                                ? "6-7 nights"
-                                : "8+ nights";
+                const duration = getDurationLabel(nights);
 
                 const category = counts.find(
                     (item) => item.duration === duration,

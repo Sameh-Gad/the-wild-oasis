@@ -81,7 +81,10 @@ export default function CabinRow({ cabin }) {
                         <Button variation="secondary">Edit</Button>
                     </Modal.Open>
 
-                    <Modal.Window name="cabin-edit">
+                    <Modal.Window
+                        name="cabin-edit"
+                        label={`Edit cabin ${name}`}
+                    >
                         <CreateCabinForm cabinToEdit={cabin} />
                     </Modal.Window>
 
@@ -95,7 +98,10 @@ export default function CabinRow({ cabin }) {
                         </Button>
                     </Modal.Open>
 
-                    <Modal.Window name="cabin-delete">
+                    <Modal.Window
+                        name="cabin-delete"
+                        label={`Delete cabin ${name}`}
+                    >
                         <ConfirmDelete
                             resourceName={`cabin ${name}`}
                             onConfirm={() => deleteCabin(cabinId)}

@@ -4,6 +4,7 @@ import {
     useCallback,
     useContext,
     useEffect,
+    useRef,
     useState,
 } from "react";
 import { useOutsideClick } from "../hooks/useOutsideClick";
@@ -42,21 +43,63 @@ function Open({ children, opens }) {
 
 Modal.Open = Open;
 
-function Window({ children, name }) {
+function Window({ children, name, label }) {
     const { openName, close } = useModal();
     const ref = useOutsideClick({ handler: close });
+    const previouslyFocusedRef = useRef(null);
     const isOpen = openName === name;
 
     useEffect(() => {
         if (!isOpen) return;
 
+        const dialog = ref.current;
+        const focusableSelector =
+            'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+        const getFocusableElements = () =>
+            Array.from(dialog.querySelectorAll(focusableSelector));
+
+        previouslyFocusedRef.current = document.activeElement;
+        (getFocusableElements()[0] ?? dialog).focus();
+
         function handleKeyDown(event) {
             if (event.key === "Escape") close();
+            if (event.key !== "Tab") return;
+
+            const focusableElements = getFocusableElements();
+            if (focusableElements.length === 0) {
+                event.preventDefault();
+                dialog.focus();
+                return;
+            }
+
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            if (
+                event.shiftKey &&
+                (document.activeElement === firstElement ||
+                    !dialog.contains(document.activeElement))
+            ) {
+                event.preventDefault();
+                lastElement.focus();
+            } else if (
+                !event.shiftKey &&
+                (document.activeElement === lastElement ||
+                    !dialog.contains(document.activeElement))
+            ) {
+                event.preventDefault();
+                firstElement.focus();
+            }
         }
 
         document.addEventListener("keydown", handleKeyDown);
-        return () => document.removeEventListener("keydown", handleKeyDown);
-    }, [close, isOpen]);
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+            if (previouslyFocusedRef.current?.isConnected) {
+                previouslyFocusedRef.current.focus();
+            }
+        };
+    }, [close, isOpen, ref]);
 
     if (!isOpen) return null;
 
@@ -66,6 +109,8 @@ function Window({ children, name }) {
                 ref={ref}
                 role="dialog"
                 aria-modal="true"
+                aria-label={label}
+                tabIndex={-1}
                 className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl bg-white p-6 shadow-xl "
             >
                 <button

@@ -10,11 +10,11 @@ import {
 } from "recharts";
 import { formatCurrency } from "../../utils/formatCurrency";
 
-export function SalesChart({ bookings = [], numDays }) {
+export function SalesChart({ bookings = [], numDays, referenceTime }) {
     const data = useMemo(
         () =>
             Array.from({ length: numDays }, (_, i) => {
-                const date = new Date();
+                const date = new Date(referenceTime);
                 date.setDate(date.getDate() - (numDays - 1 - i));
 
                 const sameDayBookings = bookings.filter(
@@ -38,7 +38,7 @@ export function SalesChart({ bookings = [], numDays }) {
                     ),
                 };
             }),
-        [bookings, numDays],
+        [bookings, numDays, referenceTime],
     );
 
     return (
@@ -60,7 +60,11 @@ export function SalesChart({ bookings = [], numDays }) {
                             axisLine={false}
                         />
                         <YAxis
-                            tickFormatter={formatCurrency}
+                            tickFormatter={(value) =>
+                                formatCurrency(value, {
+                                    maximumFractionDigits: 0,
+                                })
+                            }
                             tick={{ fill: "#78716c", fontSize: 12 }}
                             tickLine={false}
                             axisLine={false}

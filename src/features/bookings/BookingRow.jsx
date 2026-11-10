@@ -93,7 +93,10 @@ export function BookingRow({ booking }) {
                             Delete
                         </Button>
                     </Modal.Open>
-                    <Modal.Window name="delete">
+                    <Modal.Window
+                        name="delete"
+                        label={`Delete booking #${id}`}
+                    >
                         <ConfirmDelete
                             resourceName={`booking #${id}`}
                             disabled={isDeleting}

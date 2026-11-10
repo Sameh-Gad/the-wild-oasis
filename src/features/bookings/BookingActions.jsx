@@ -162,7 +162,10 @@ export default function BookingActions({ booking }) {
                 </div>
             )}
 
-            <Modal.Window name="delete">
+            <Modal.Window
+                name="delete"
+                label={`Delete booking #${id}`}
+            >
                 <ConfirmDelete
                     resourceName={`booking #${id}`}
                     disabled={isDeleting}

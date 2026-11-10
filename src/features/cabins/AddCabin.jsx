@@ -12,7 +12,7 @@ function AddCabin() {
                     Add new cabin
                 </button>
             </Modal.Open>
-            <Modal.Window name="cabin-form">
+            <Modal.Window name="cabin-form" label="Create new cabin">
                 <CreateCabinForm />
             </Modal.Window>
         </Modal>
