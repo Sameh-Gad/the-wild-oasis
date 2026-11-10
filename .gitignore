@@ -16,3 +16,8 @@ dist-ssr
 
 # Generated files
 repomix-output.xml
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
