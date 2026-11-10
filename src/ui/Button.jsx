@@ -6,6 +6,9 @@ const variationStyles = {
         "bg-stone-200 text-stone-800 hover:bg-stone-300 focus:ring-stone-400",
 
     danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-600",
+
+    dangerOutline:
+        "border border-red-300 bg-white text-red-700 hover:bg-red-50 focus:ring-red-600",
 };
 
 export default function Button({

@@ -78,6 +78,11 @@ export function DurationChart({ confirmedStays = [] }) {
                                 layout="vertical"
                                 iconSize={10}
                                 iconType="circle"
+                                formatter={(value) => (
+                                    <span className="text-stone-700">
+                                        {value}
+                                    </span>
+                                )}
                             />
                         </PieChart>
                     </ResponsiveContainer>

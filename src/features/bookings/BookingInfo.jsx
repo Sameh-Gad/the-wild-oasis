@@ -1,4 +1,5 @@
 import { formatDate } from "../../utils/formatDate";
+import { formatCount } from "../../utils/formatCount";
 
 export default function BookingInfo({ booking }) {
     const { cabins, startDate, endDate, numNights, numGuests } = booking;
@@ -32,13 +33,13 @@ export default function BookingInfo({ booking }) {
                 <div className="space-y-1">
                     <dt className="text-sm text-stone-500">Duration</dt>
                     <dd className="font-medium text-stone-800">
-                        {numNights} nights
+                        {formatCount(numNights, "night")}
                     </dd>
                 </div>
                 <div className="space-y-1">
                     <dt className="text-sm text-stone-500">Guests</dt>
                     <dd className="font-medium text-stone-800">
-                        {numGuests} guests
+                        {formatCount(numGuests, "guest")}
                     </dd>
                 </div>
             </dl>

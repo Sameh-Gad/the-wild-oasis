@@ -2,17 +2,12 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
 import Modal from "../../ui/Modal";
 import QueryState from "../../ui/QueryState";
+import StatusBadge from "../../ui/StatusBadge";
 import BookingActions from "./BookingActions";
 import BookingInfo from "./BookingInfo";
 import GuestInfo from "./GuestInfo";
 import PaymentInfo from "./PaymentInfo";
 import { useBooking } from "./useBooking";
-
-const statusStyles = {
-    unconfirmed: "bg-sky-100 text-sky-700",
-    "checked-in": "bg-emerald-100 text-emerald-700",
-    "checked-out": "bg-stone-200 text-stone-700",
-};
 
 function BookingDetail() {
     const { booking, isPending, error } = useBooking();
@@ -37,11 +32,7 @@ function BookingDetail() {
                         <h1 className="text-2xl font-semibold text-stone-800">
                             Booking #{booking.id}
                         </h1>
-                        <span
-                            className={`rounded-full px-3 py-1 text-xs font-semibold uppercase ${statusStyles[booking.status]}`}
-                        >
-                            {booking.status.replace("-", " ")}
-                        </span>
+                        <StatusBadge status={booking.status} />
                     </div>
                     <Button
                         variation="secondary"

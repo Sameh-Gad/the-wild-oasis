@@ -18,15 +18,31 @@ The course project provided the foundation, while this version includes addition
 - **Authentication:** Supabase authentication and protected application routes.
 - **Server state management:** Data fetching, caching, and synchronization with TanStack Query.
 
+## Screenshots
+
+### Dashboard
+![Dashboard](docs/screenshots/dashboard.png)
+
+### Bookings
+![Bookings](docs/screenshots/bookings.png)
+
+### Cabins
+![Cabins](docs/screenshots/cabins.png)
+
 ## My Improvements
 
-- **Modernized Tech Stack:** Using React 19, React Router 7, TanStack Query 5, and Tailwind CSS 4.
-- **Server-side Pagination:** Implemented server-side pagination, sorting, and filtering for bookings using Supabase queries.
-- **Enhanced Check-in Workflow:** Added an optional breakfast feature during check-in, with automatic calculation of additional costs based on the number of guests and nights, and updated booking totals.
+This version builds upon the original course project with the following personal improvements and technical updates:
+
+- **Modernized Styling and Dependencies:** Replaced the course's original styled-components-based styling with Tailwind CSS 4, and upgraded the application to React 19, React Router 7, and TanStack Query 5.
+- **More Resilient Pagination:** Added fallback handling for out-of-range booking pages, including retrieving the last available page when records change.
+- **Supabase Storage Cleanup:** Improved cabin image management by cleaning up newly uploaded images when operations fail and removing previous images when they are replaced.
+- **Modal Accessibility:** Added Escape-key dismissal, keyboard focus trapping, focus restoration, and accessible dialog labels.
+- **Reusable UI Components:** Added shared `Input` and `QueryState` components and organized booking details into smaller, focused components.
+- **URL Parameter Validation:** Added validation for dashboard date filters and booking filter and sorting parameters before using them in queries.
 - **Route-based Code Splitting:** Added lazy-loaded route components to reduce the initial JavaScript payload and load pages on demand.
-- **Component Refactoring:** Organized booking details into smaller, focused components and extracted reusable UI elements.
-- **Improved Data Handling:** Added URL parameter validation, query cache invalidation, and refined dashboard date handling.
-- **Custom Branding:** Added a custom SVG favicon for the application.
+- **Dashboard Date Handling:** Improved date calculations and local-day boundaries for more consistent dashboard results.
+- **Development and Deployment Tooling:** Added Oxlint and Prettier configuration, along with Vercel SPA routing configuration.
+- **Custom Branding:** Created a custom SVG favicon for the application.
 
 ## Tech Stack
 

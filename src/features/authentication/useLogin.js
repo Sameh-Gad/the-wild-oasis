@@ -20,7 +20,9 @@ export function useLogin() {
 
         onError: (error) => {
             console.error("Login failed:", error);
-            toast.error("Unable to sign in. Please try again.");
+            toast.error(
+                "Unable to sign in. Please check your credentials and try again.",
+            );
         },
     });
 

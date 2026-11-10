@@ -6,6 +6,7 @@ import CreateCabinForm from "./CreateCabinForm";
 import { useCreateCabin } from "./useCreateCabin";
 import { useDeleteCabin } from "./useDeleteCabin";
 import { formatCurrency } from "../../utils/formatCurrency";
+import { formatCount } from "../../utils/formatCount";
 
 export default function CabinRow({ cabin }) {
     const {
@@ -38,7 +39,7 @@ export default function CabinRow({ cabin }) {
                 <span className="font-semibold text-stone-800">{name}</span>
 
                 <span className="text-sm text-stone-500">
-                    {maxCapacity} guests
+                    {formatCount(maxCapacity, "guest")}
                 </span>
 
                 <span className="text-sm text-stone-500">
