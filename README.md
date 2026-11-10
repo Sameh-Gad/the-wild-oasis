@@ -1,50 +1,75 @@
 # The Wild Oasis
 
-A hotel management dashboard for keeping daily operations in one place. Staff can manage cabins and bookings, review guest stays, handle check-ins and check-outs, and monitor hotel activity from a dashboard.
+A hotel management dashboard that helps staff manage daily hotel operations in one place. It provides tools for managing cabins and bookings, handling guest check-ins and check-outs, and monitoring hotel activity through a central dashboard.
 
 ## Features
 
-- Dashboard with booking and sales metrics, recent stays, stay-duration chart, and today's arrivals and departures
-- Cabin and booking management, including booking details
-- Guest check-in and check-out workflows
-- Settings and account management
-- Protected routes and Supabase authentication
-- Data fetching and caching with TanStack Query
+- **Dashboard:** View booking and sales metrics, recent stays, stay-duration analytics, and today's arrivals and departures.
+- **Cabin management:** View, create, update, and manage hotel cabins.
+- **Booking management:** Browse bookings and view detailed booking information.
+- **Guest operations:** Handle guest check-ins and check-outs.
+- **Settings and account management:** Manage hotel settings and user account information.
+- **Authentication:** Supabase authentication and protected application routes.
+- **Server state management:** Data fetching, caching, and synchronization with TanStack Query.
 
-## Built with
+## Tech Stack
 
-- React and Vite
-- React Router
-- Supabase
-- TanStack Query
-- Tailwind CSS
-- Recharts
+- **React** – UI development
+- **Vite** – Development server and build tool
+- **React Router** – Client-side routing
+- **Supabase** – Database, authentication, and storage
+- **TanStack Query** – Server state management and caching
+- **Tailwind CSS** – Styling
+- **Recharts** – Dashboard charts
 
-## Getting started
+## Getting Started
 
-### Requirements
+### Prerequisites
 
 - Node.js (LTS recommended)
 - npm
-- A Supabase project configured with the database and authentication used by this application
+- A Supabase project configured with the database, authentication, and storage resources expected by the application.
 
-### Install and run
+### Installation
 
-```bash
-npm install
-npm run dev
-```
+1. Clone the repository:
 
-Create a `.env` file in the project root and provide your Supabase project URL and public client key:
+   ```bash
+   git clone https://github.com/Sameh-Gad/the-wild-oasis.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd the-wild-oasis
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+### Environment Variables
+
+Create a `.env` file in the project root and add your Supabase credentials:
 
 ```env
 VITE_SUPABASE_URL=https://your-project.supabase.co
 VITE_SUPABASE_KEY=your-supabase-publishable-or-anon-key
 ```
 
-Use only a Supabase publishable/anon key in this browser application. Never put a `service_role` key in a `VITE_` variable or commit credentials.
+You can use the provided `.env.example` file as a reference.
 
-## Available scripts
+**Security note:** This application runs in the browser, so only use a Supabase publishable key (or legacy anon key). Never expose a `service_role` key through a `VITE_` environment variable or commit credentials to the repository.
+
+### Run the Development Server
+
+```bash
+npm run dev
+```
+
+## Available Scripts
 
 | Command | Description |
 | --- | --- |
@@ -55,17 +80,23 @@ Use only a Supabase publishable/anon key in this browser application. Never put 
 | `npm run format` | Format source and project configuration files |
 | `npm run format:check` | Check formatting |
 
-## Deploying to Vercel
+## Deployment
 
-Import the repository into Vercel and add `VITE_SUPABASE_URL` and `VITE_SUPABASE_KEY` to the project's environment variables. Vercel detects Vite's build settings; the included `vercel.json` rewrite serves the SPA entry point for direct visits and refreshes on application routes.
+The application can be deployed to [Vercel](https://vercel.com/).
 
-## Project structure
+1. Import the GitHub repository into Vercel.
+2. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_KEY` to the project's environment variables.
+3. Deploy the application.
+
+Vercel detects the Vite build settings automatically. The included `vercel.json` rewrite configuration supports the single-page application routing, including direct visits and page refreshes on application routes.
+
+## Project Structure
 
 ```text
 src/
-  features/       Feature-specific UI and React Query hooks
-  pages/          Route-level pages
-  services/       Supabase API functions and client
-  ui/             Shared layout and UI components
-  utils/          Shared utilities
+├── features/       # Feature-specific UI and React Query hooks
+├── pages/          # Route-level pages
+├── services/       # Supabase client and API functions
+├── ui/             # Shared layout and UI components
+└── utils/          # Shared utility functions
 ```
