@@ -19,7 +19,9 @@ export function useRecentBookings() {
             queryDate.setHours(0, 0, 0, 0);
             queryDate.setDate(queryDate.getDate() - numDays);
 
-            const bookings = await getBookingsAfterDate(queryDate.toISOString());
+            const bookings = await getBookingsAfterDate(
+                queryDate.toISOString(),
+            );
 
             return { bookings, referenceTime: referenceTime.toISOString() };
         },

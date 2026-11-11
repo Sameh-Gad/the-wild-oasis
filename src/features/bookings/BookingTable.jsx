@@ -28,7 +28,7 @@ function BookingTable() {
     }
 
     return (
-        <Table columns="0.6fr 2fr 2.4fr 1.4fr 1fr 2.8fr">
+        <Table columns="minmax(4.5rem, 0.8fr) minmax(9.5rem, 1.8fr) minmax(10.5rem, 2.1fr) minmax(6.5rem, 1.2fr) minmax(4.5rem, 0.9fr) minmax(14.5rem, 2.8fr)">
             <Table.Header>
                 <span>Cabin</span>
                 <span>Guest</span>

@@ -60,9 +60,10 @@ export function BookingRow({ booking }) {
                 <div className="flex items-center justify-end gap-2">
                     {status === "checked-in" && (
                         <Button
+                            size="small"
                             disabled={isCheckingOut}
                             onClick={() => checkout(id)}
-                            className="whitespace-nowrap px-3 text-sm"
+                            className="whitespace-nowrap"
                         >
                             {isCheckingOut ? "Checking out..." : "Check out"}
                         </Button>
@@ -77,17 +78,15 @@ export function BookingRow({ booking }) {
 
                     <Modal.Open opens="delete">
                         <Button
+                            size="small"
                             variation="dangerOutline"
                             disabled={isDeleting}
-                            className="whitespace-nowrap px-2.5 py-1.5 text-xs"
+                            className="whitespace-nowrap"
                         >
                             Delete
                         </Button>
                     </Modal.Open>
-                    <Modal.Window
-                        name="delete"
-                        label={`Delete booking #${id}`}
-                    >
+                    <Modal.Window name="delete" label={`Delete booking #${id}`}>
                         <ConfirmDelete
                             resourceName={`booking #${id}`}
                             disabled={isDeleting}

@@ -21,7 +21,5 @@ export function formatCurrency(amount, options = {}) {
                     ...options,
                 });
 
-    return formatter.format(
-        Number.isFinite(numericAmount) ? numericAmount : 0,
-    );
+    return formatter.format(Number.isFinite(numericAmount) ? numericAmount : 0);
 }

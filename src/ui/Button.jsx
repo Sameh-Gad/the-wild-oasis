@@ -1,3 +1,9 @@
+const sizeStyles = {
+    small: "px-2.5 py-1.5 text-xs",
+    medium: "px-4 py-2",
+    large: "px-5 py-2.5 text-base",
+};
+
 const variationStyles = {
     primary:
         "bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-600",
@@ -15,11 +21,13 @@ export default function Button({
     children,
     onClick,
     disabled,
+    size = "medium",
     variation = "primary",
     type = "button",
     className = "",
     ...buttonProps
 }) {
+    const sizeClasses = sizeStyles[size] ?? sizeStyles.medium;
     const variationClasses =
         variationStyles[variation] ?? variationStyles.primary;
 
@@ -29,7 +37,7 @@ export default function Button({
             type={type}
             onClick={onClick}
             disabled={disabled}
-            className={`rounded px-4 py-2 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 ${variationClasses} ${className}`}
+            className={`rounded font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 ${sizeClasses} ${variationClasses} ${className}`}
         >
             {children}
         </button>
