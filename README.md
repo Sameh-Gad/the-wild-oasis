@@ -8,6 +8,12 @@ This project is an extended implementation of **The Wild Oasis**, originally bui
 
 The course project provided the foundation, while this version includes additional improvements, updated dependencies, UI refinements, and custom functionality developed as part of my learning and portfolio work.
 
+## Live Demo
+
+[Try The Wild Oasis](https://the-wild-oasis-seven-taupe.vercel.app/)
+
+Demo credentials are pre-filled on the login page.
+
 ## Features
 
 - **Dashboard:** View booking and sales metrics, recent stays, stay-duration analytics, and today's arrivals and departures.
