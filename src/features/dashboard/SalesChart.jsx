@@ -10,17 +10,27 @@ import {
 } from "recharts";
 import { formatCurrency } from "../../utils/formatCurrency";
 
+function getDateKey(value) {
+    const date = new Date(value);
+
+    if (Number.isNaN(date.getTime())) {
+        return "";
+    }
+
+    return date.toLocaleDateString("en-CA");
+}
+
 export function SalesChart({ bookings = [], numDays, referenceTime }) {
     const data = useMemo(
         () =>
             Array.from({ length: numDays }, (_, i) => {
                 const date = new Date(referenceTime);
+                date.setHours(0, 0, 0, 0);
                 date.setDate(date.getDate() - (numDays - 1 - i));
 
+                const dateKey = getDateKey(date);
                 const sameDayBookings = bookings.filter(
-                    (b) =>
-                        new Date(b.created_at).toDateString() ===
-                        date.toDateString(),
+                    (b) => getDateKey(b.created_at) === dateKey,
                 );
 
                 return {

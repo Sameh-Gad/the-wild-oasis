@@ -15,6 +15,7 @@ export function useRecentStays() {
         queryKey: ["stays", numDays],
         queryFn: () => {
             const queryDate = new Date();
+            queryDate.setHours(0, 0, 0, 0);
             queryDate.setDate(queryDate.getDate() - numDays);
             return getStaysAfterDate(queryDate.toISOString());
         },

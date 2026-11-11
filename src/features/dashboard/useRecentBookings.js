@@ -14,12 +14,14 @@ export function useRecentBookings() {
     } = useQuery({
         queryKey: ["recent-bookings", numDays],
         queryFn: async () => {
-            const referenceTime = Date.now();
+            const referenceTime = new Date();
             const queryDate = new Date(referenceTime);
+            queryDate.setHours(0, 0, 0, 0);
             queryDate.setDate(queryDate.getDate() - numDays);
+
             const bookings = await getBookingsAfterDate(queryDate.toISOString());
 
-            return { bookings, referenceTime };
+            return { bookings, referenceTime: referenceTime.toISOString() };
         },
     });
 
